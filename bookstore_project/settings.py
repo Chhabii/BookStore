@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #LOCAL APPS
     "users",
     "pages",
+    "books",
 
     
 ]

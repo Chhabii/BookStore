@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "users",
     "pages",
     "books",
+    "orders",
 
     
 ]
@@ -211,3 +212,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST_USER = 'achrxn@gmail.com'
 # EMAIL_HOST_PASSWORD = 'Il0vegym6969@#'
 # DEFAULT_FROM_EMAIL = 'achrxn@gmail.com'
+
+STRIPE_TEST_PUBLISHABLE_KEY=config('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY=config('STRIPE_TEST_SECRET_KEY')

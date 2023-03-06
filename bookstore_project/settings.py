@@ -11,7 +11,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG")
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.netlify.com', 'localhost', '127.0.0.1']
 ENVIRONMENT = 'production'
 if ENVIRONMENT=='production':
     SECURE_BROWSER_XSS_FILTER = True #prevent malicious scripts from being executed on the user's browser.
@@ -232,9 +232,10 @@ STRIPE_TEST_SECRET_KEY=config('STRIPE_TEST_SECRET_KEY')
 # import socket
 # hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 # INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
 INTERNAL_IPS = ['127.0.0.1']
 
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['DEFAULT'].update(db_from_env)
+DATABASES['default'].update(db_from_env)

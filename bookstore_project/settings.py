@@ -11,7 +11,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG")
 
-ALLOWED_HOSTS = ['.netlify.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['bookstorechhabii.netlify.app', 'localhost', '127.0.0.1']
 ENVIRONMENT = 'production'
 if ENVIRONMENT=='production':
     SECURE_BROWSER_XSS_FILTER = True #prevent malicious scripts from being executed on the user's browser.
@@ -21,6 +21,9 @@ if ENVIRONMENT=='production':
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True #includes all subdomains of the website in the HSTS policy.
     SECURE_HSTS_PRELOAD = True #adds the website to a preload list used by major web browsers to enforce HSTS, even on the user's first visit to the site.
     SECURE_CONTENT_TYPE_NOSNIFF = True #prevents browsers from interpreting files as a different MIME type, which can be exploited by attackers to execute malicious code.
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Application definition
 
 INSTALLED_APPS = [

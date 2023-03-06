@@ -5,18 +5,22 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 from decouple import config
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG")
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ENVIRONMENT = 'production'
+if ENVIRONMENT=='production':
+    SECURE_BROWSER_XSS_FILTER = True #prevent malicious scripts from being executed on the user's browser.
+    X_FRAME_OPTIONS = 'DENY'    
+    SECURE_SSL_REDIRECT = True #any incoming HTTP request to the site is automatically redirected to the equivalent HTTPS URL. This ensures that all communication between the client and the server is encrypted and secure, protecting sensitive information such as authentication credentials, API keys, and user data from being intercepted by malicious actors.
+    SECURE_HSTS_SECONDS = 3600 #sets the duration (in seconds) for which the server should inform the client to only use HTTPS, using the HTTP Strict Transport Security (HSTS) mechanism.
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True #includes all subdomains of the website in the HSTS policy.
+    SECURE_HSTS_PRELOAD = True #adds the website to a preload list used by major web browsers to enforce HSTS, even on the user's first visit to the site.
+    SECURE_CONTENT_TYPE_NOSNIFF = True #prevents browsers from interpreting files as a different MIME type, which can be exploited by attackers to execute malicious code.
 # Application definition
 
 INSTALLED_APPS = [

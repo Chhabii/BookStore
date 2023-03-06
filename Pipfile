@@ -12,6 +12,7 @@ django-allauth = "*"
 python-decouple = "*"
 pillow = "*"
 stripe = "*"
+django-debug-toolbar = "*"
 
 [dev-packages]
 

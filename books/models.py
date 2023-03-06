@@ -16,6 +16,9 @@ class Book(models.Model):
     cover = models.ImageField(upload_to='covers/',blank=True)
     
     class Meta:
+        indexes = [
+            models.Index(fields=['id'],name='id_index'),
+        ]
         #special_status permission is a custom permission defined specifically for the Book model, and it does not have any special meaning in Django by default
         permissions = [
             ('special_status','Can read all books'),
